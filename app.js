@@ -12,7 +12,7 @@ const answers = [
   "The best place to get help is inside Frontend Mentor's Discord community. There's a help channel where you can ask questions and seek support from other community members.",
 ];
 
-function showAnswer(event, icon) {
+const showAnswer = (event, icon) => {
   let answer;
 
   event.target.classList.contains("faq-question")
@@ -24,7 +24,7 @@ function showAnswer(event, icon) {
       ? (icon.src = "assets/images/icon-plus.svg")
       : (icon.src = "assets/images/icon-minus.svg");
   }
-}
+};
 
 const createElement = ({ tag, classList, text = null, parent }) => {
   let element = document.createElement(tag);
