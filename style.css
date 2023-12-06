@@ -15,6 +15,7 @@
   --light-pink: hsl(275, 100%, 97%);
   --grayish-purple: hsl(292, 16%, 49%);
   --dark-purple: hsl(292, 42%, 14%);
+  --icon-purple: hsl(281, 83%, 54%);
 }
 * {
   margin: 0;
@@ -61,15 +62,16 @@ body {
   margin-top: 20px;
   color: var(--dark-purple);
   font-family: "Work Sans SemiBold";
+  cursor: pointer;
+}
+.faq-question:hover {
+  color: var(--icon-purple);
 }
 .faq-answer {
   margin-top: 10px;
   color: var(--grayish-purple);
   font-family: "Work Sans Regular";
   line-height: 25px;
-}
-.icon {
-  cursor: pointer;
 }
 .hide {
   display: none;
