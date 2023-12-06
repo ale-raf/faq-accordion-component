@@ -12,12 +12,18 @@ const answers = [
   "The best place to get help is inside Frontend Mentor's Discord community. There's a help channel where you can ask questions and seek support from other community members.",
 ];
 
-const showAnswer = (event, icon) => {
+/**
+ * TOGGLE ANSWER BY ADDING OR REMOVING CLASS
+ * @param {event} event Event target
+ * @param {image} icon Dynamic icon
+ */
+const toggleAnswer = (event, icon) => {
   let answer;
 
   event.target.classList.contains("faq-question")
     ? (answer = event.target.nextElementSibling)
     : (answer = event.target.parentElement.nextElementSibling);
+
   if (answer.classList.contains("faq-answer")) {
     let answerToggle = answer.classList.toggle("hide");
     answerToggle
@@ -26,6 +32,14 @@ const showAnswer = (event, icon) => {
   }
 };
 
+/**
+ * CREATE HTML ELEMENT
+ * @param {element} tag HTML tag
+ * @param {array} classList Element class
+ * @param {string} text Element inner text
+ * @param {element} parent Parent element
+ * @returns Created element
+ */
 const createElement = ({ tag, classList, text = null, parent }) => {
   let element = document.createElement(tag);
   classList
@@ -44,27 +58,31 @@ questions.forEach((question, index) => {
     classList: ["faq-global"],
     parent: container,
   });
+
   let questionDiv = createElement({
     tag: "div",
     classList: ["faq-question"],
     parent: globalDiv,
   });
-  createElement({
+
+  let questionElement = createElement({
     tag: "p",
     text: question,
     parent: questionDiv,
   });
+
   let iconQuestion = createElement({
     tag: "img",
     parent: questionDiv,
   });
   iconQuestion.src = "assets/images/icon-plus.svg";
-  createElement({
+
+  let answerElement = createElement({
     tag: "p",
     classList: ["faq-answer", "hide"],
     text: answers[index],
     parent: globalDiv,
   });
 
-  questionDiv.addEventListener("click", (e) => showAnswer(e, iconQuestion));
+  questionDiv.addEventListener("click", (e) => toggleAnswer(e, iconQuestion));
 });
